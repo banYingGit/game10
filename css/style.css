@@ -1,0 +1,714 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    color: #084004;
+    font-style: normal;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: url("../img/bg2.jpg") center no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.img-box img {
+    display: block;
+    width: 100%;
+}
+
+img {
+    vertical-align: middle
+}
+
+.screen {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.screen1 {
+    background: url("../img/bg1.jpg") center no-repeat;
+    background-size: 100% 100%;
+}
+
+.science {
+    background: url("../img/science.jpg") center no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 按钮样式 */
+.button-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 9.5%;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    height: 100%;
+    background: #f39800;
+    color: #fff;
+    padding: 0 60px;
+    text-shadow: 2px 2px 2px #666;
+    letter-spacing: 20px;
+    text-indent: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 0px 1px #c27a00;
+    line-height: 200%;
+}
+
+.button2 {
+    background: #aaa;
+    box-shadow: 0 5px 0px 1px #999;
+}
+
+.button-box-s .button {
+    margin: 0 3%;
+}
+
+/*按钮位置1*/
+.button-pos-a {
+    position: absolute;
+    top: 70%;
+    left: 0;
+}
+
+/* 文字说明 */
+.box-bg {
+    position: relative;
+    z-index: 1;
+    width: 70%;
+    padding: 2.5% 5%;
+    margin: 12% auto 4% auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: #fff;
+    line-height: 200%;
+}
+
+.box-bg h2 {
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: lighter;
+    color: #1f8017;
+}
+
+/*进度条*/
+.process {
+    position: relative;
+    width: 75%;
+    height: 70px;
+    margin: 0 auto;
+    background: #e3ffe1;
+    border-radius: 33px;
+    box-shadow: 0 8px 10px -3px #63ac5e inset;
+    border: solid 2px #e3ffe1;
+}
+
+.process:after {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 33px;
+    box-shadow: 0 5px 3px 3px #157f3d;
+    content: '';
+}
+
+.process-bar {
+    position: absolute;
+    display: block;
+    bottom: 8%;
+    left: 0.5%;
+    z-index: 2;
+    height: 80%;
+    border-radius: 33px;
+    background: url("../img/process.jpg") 0 0 repeat-x;
+    background-size: auto 100%;
+}
+
+.process-bar:after {
+    position: absolute;
+    right: -70px;
+    top: -70px;
+    width: 210px;
+    height: 210px;
+    line-height: 210px;
+    font-size: 40px;
+    text-indent: 55px;
+    background: url("../img/sheep-icon.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+    content: attr(data-per);
+}
+
+/*** 游戏结束 ***/
+#overBox:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 78, 9, 0.4);
+    content: '';
+}
+
+#overBox .box-bg {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#overBox .over-text {
+    width: 60%;
+    margin: 6% auto 5% auto;
+    line-height: 120%;
+}
+
+#overBox .over-text:after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+#overBox .over-text span {
+    display: block;
+    float: left;
+}
+
+#overBox .over-text i {
+    display: block;
+    float: right;
+}
+
+/** 游戏暂停 **/
+.stop-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 78, 9, 0.8);
+
+}
+
+.stop-box img {
+    display: block;
+    width: 100%;
+}
+
+.continue {
+    width: 12%;
+    margin: 15% auto 2% auto;
+}
+
+.out {
+    width: 7%;
+    margin: 0 auto;
+}
+
+/**确认退出**/
+.sure-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 78, 9, 0.8);
+}
+
+.sure-main {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+    padding: 3% 5% 5% 5%;
+    margin: 20% auto 4% auto;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    color: #fff;
+
+}
+
+.sure-main h3 {
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: lighter;
+    color: #1f8017;
+    line-height: 300%;
+}
+
+.sure-main .button-box {
+    height: 5%
+}
+
+.sure-main .button {
+    padding: 0 50px;
+    line-height: 90px;
+}
+
+/**帮助画面**/
+.icon-arrow {
+    position: absolute;
+    top: 45%;
+
+    z-index: 100;
+    width: 70px;
+}
+
+.icon-arrow.left {
+    left: 30px;
+}
+
+.icon-arrow.right {
+    right: 30px;
+}
+
+.spot {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+}
+
+.spot li {
+    display: inline-block;
+    width: 30px;
+    margin: 0 10px;
+    opacity: .5;
+}
+
+.spot li.active {
+    opacity: 1;
+}
+
+.help-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300%;
+    transition: all .5s;
+}
+
+.help-list li {
+    display: block;
+    float: left;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.help1 {
+    background-image: url("../img/help1.jpg");
+}
+
+.help2 {
+    background-image: url("../img/help2.jpg");
+}
+
+.help3 {
+    background-image: url("../img/help3.jpg");
+}
+
+/*****************  游戏区按钮 *****************/
+.part-btn {
+    position: absolute;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 5px 5px -1px #157f3d;
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.top-left {
+    top: -20px;
+    left: -20px;
+    background-image: url("../img/stop2.png");
+}
+
+.top-right {
+    top: -20px;
+    right: -20px;
+    background-image: url("../img/help.png");
+}
+
+.bottom-right {
+    bottom: -20px;
+    right: -20px;
+    background-image: url("../img/stop1.png");
+}
+
+.part-text {
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+    width: 90%;
+
+}
+
+.part-text li {
+    display: block;
+    float: right;
+    margin-right: 2%;
+    height: 100%;
+    padding: 2.5% 1.5% 0 1.5%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 5px 5px -1px #157f3d;
+    font-weight: bold;
+    color: #1f8017;
+
+}
+
+.part-text li span {
+    padding-left: 5px;
+    color: #1f8017;
+}
+
+.part-text li .process-icon {
+    width: 200px;
+    height: 100%;
+    margin-right: 5px;
+    float: left;
+}
+
+.part-text li .process-icon i {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 100%;
+    background: url("../img/icon1s.png") center 10px no-repeat;
+    background-size: 70%;
+}
+
+.part-text li .process-icon i.active {
+    background: url("../img/icon1.png") center 10px no-repeat;
+    background-size: 70%;
+}
+
+.part-text li p.max {
+    display: block;
+    float: left;
+    color: #1f8017;
+}
+
+/** 羊与狗 **/
+#movePart {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    margin-top: 10%;
+}
+
+.part {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    top: 10%;
+    left: 10%;
+}
+
+.part-list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.part-list li {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.part-list li.st {
+
+    background-image: url("../img/st.png");
+
+}
+
+.part-list li.sr {
+    background-image: url("../img/sr.png");
+
+}
+
+.part-list li.sb {
+    background-image: url("../img/sb.png");
+
+}
+
+.part-list li.sl {
+    background-image: url("../img/sl.png");
+
+}
+
+.part-list li.dt {
+    background-image: url("../img/dt.png");
+}
+
+.part-list li.dr {
+    background-image: url("../img/dr.png");
+
+}
+
+.part-list li.db {
+    background-image: url("../img/db.png");
+
+}
+
+.part-list li.dl {
+    background-image: url("../img/dl.png");
+
+}
+
+.part-list li.st, .part-list li.sb {
+    background-size: auto 90%;
+}
+
+.part-list li.sl, .part-list li.sr {
+    background-size: 90% auto;
+}
+
+.part-list li.dt, .part-list li.db {
+    background-size: auto 100%;
+}
+
+.part-list li.dl, .part-list li.dr {
+    background-size: 100% auto;
+}
+
+/** part-list1  一字形排列  **/
+.part-list1 {
+    padding-top: 15%;
+    box-sizing: border-box;
+}
+
+.part-list1 li {
+    float: left;
+}
+
+.part-list1 li.dt, .part-list1 li.db {
+    margin-top: -15px;
+    height: 65%;
+    background-size: auto 100%;
+}
+
+.part-list1 li.dl, .part-list1 li.dr {
+    background-size: 100% auto;
+}
+
+/** part-list2  左上右下排列  **/
+.part-list2 li {
+    position: absolute;
+}
+
+.part-list2 li:nth-child(1) {
+    top: 10%;
+    left: 5%;
+}
+
+.part-list2 li:nth-child(2) {
+    top: 20%;
+    left: 24%;
+}
+
+.part-list2 li:nth-child(3) {
+    top: 30%;
+    left: 40%;
+}
+
+.part-list2 li:nth-child(4) {
+    top: 40%;
+    right: 24%;
+}
+
+.part-list2 li:nth-child(5) {
+    top: 50%;
+    right: 5%;
+}
+/** part-list3  右上左下排列  **/
+.part-list3 li {
+    position: absolute;
+
+}
+
+
+.part-list3 li:nth-child(1) {
+    top: 10%;
+    right: 0;
+}
+
+.part-list3 li:nth-child(2) {
+    top: 20%;
+    right: 20%;
+}
+
+.part-list3 li:nth-child(3) {
+    top: 30%;
+    right: 40%;
+}
+
+.part-list3 li:nth-child(4) {
+    top: 40%;
+    right: 60%;
+}
+
+.part-list3 li:nth-child(5) {
+    top: 50%;
+    right: 80%;
+}
+
+/** part-list4  箭头向左排列  **/
+
+.part-list4 li {
+    position: absolute;
+
+}
+
+
+.part-list4 li:nth-child(1) {
+    top: -5%;
+    left: 15%;
+}
+
+.part-list4 li:nth-child(2) {
+    top: 8%;
+    left: 35%;
+}
+
+.part-list4 li:nth-child(3) {
+    top: 30%;
+    left: 55%;
+}
+
+.part-list4 li:nth-child(4) {
+    bottom: 8%;
+    left: 35%;
+}
+
+.part-list4 li:nth-child(5) {
+    bottom: -5%;
+    left: 15%;
+}
+
+/** part-list5  箭头向右排列  **/
+
+.part-list5 li {
+    position: absolute;
+
+}
+
+
+.part-list5 li:nth-child(1) {
+    top: 0%;
+    right: 15%;
+}
+
+.part-list5 li:nth-child(2) {
+    top: 10%;
+    right: 35%;
+}
+
+.part-list5 li:nth-child(3) {
+    top: 30%;
+    right:55%;
+}
+
+.part-list5 li:nth-child(4) {
+    bottom: 10%;
+    right: 35%;
+}
+
+.part-list5 li:nth-child(5) {
+    bottom: 0%;
+    right: 15%;
+}
+
+/** part-list6  箭头向上排列  **/
+.part-list6 li {
+    position: absolute;
+
+}
+
+.part-list6 li:nth-child(1) {
+    bottom: 10%;
+    left: 5%;
+}
+
+.part-list6 li:nth-child(2) {
+    bottom: 25%;
+    left: 25%;
+}
+
+.part-list6 li:nth-child(3) {
+    top: 10%;
+    left: 40%;
+}
+
+.part-list6 li:nth-child(4) {
+    bottom: 25%;
+    right: 25%;
+}
+
+.part-list6 li:nth-child(5) {
+    bottom: 10%;
+    right: 5%;
+}
+
+/** part-list7  箭头向下排列  **/
+.part-list7 {
+    margin-top: 5%;
+}
+
+.part-list7 li {
+    position: absolute;
+
+}
+
+
+.part-list7 li:nth-child(1) {
+    top: 0;
+    left: 5%;
+}
+
+.part-list7 li:nth-child(2) {
+    top: 20%;
+    left: 25%;
+}
+
+.part-list7 li:nth-child(3) {
+    bottom: 20%;
+    left: 40%;
+}
+
+.part-list7 li:nth-child(4) {
+    top: 20%;
+    right: 25%;
+}
+
+.part-list7 li:nth-child(5) {
+    top: 0;
+    right: 5%;
+}
