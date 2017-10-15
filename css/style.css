@@ -12,7 +12,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: url("../img/bg2.jpg") center no-repeat;
+    background: url("../img/bg2.png") center no-repeat;
     background-size: 100% 100%;
 
 }
@@ -41,18 +41,92 @@ img {
     background-size: 100% 100%;
 }
 
+.out-but {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 8%;
+
+}
+
+.out-but img {
+    display: block;
+    width: 100%;
+}
+
 .science {
-    background: url("../img/science.jpg") center no-repeat;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url("../img/science.png") center 40% no-repeat;
+    background-size: 85% auto;
+}
+
+/*进度条*/
+.process {
+    position: absolute;
+    top: 75%;
+    left: 10%;
+    width: 80%;
+    height: 70px;
+    margin: 0 auto;
+    background: #e3ffe1;
+    border-radius: 33px;
+    box-shadow: 0 8px 10px -3px #63ac5e inset;
+    border: solid 2px #e3ffe1;
+}
+
+.process:after {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 33px;
+    box-shadow: 0 5px 3px 3px #157f3d;
+    content: '';
+}
+
+.process-bar {
+    position: absolute;
+    display: block;
+    bottom: 8%;
+    left: 0.5%;
+    z-index: 2;
+    height: 80%;
+    border-radius: 33px;
+    background: url("../img/process.jpg") 0 0 repeat-x;
+    background-size: auto 100%;
+}
+
+.process-bar p {
+    position: absolute;
+    background: url("../img/sheep-icon.png") 0 0 no-repeat;
     background-size: 100% 100%;
+    text-align: center;
+    letter-spacing: -3px;
 }
 
 /* 按钮样式 */
 .button-box {
-    position: relative;
+    position: absolute;
+    bottom: 15%;
+    left: 0;
     z-index: 1;
     width: 100%;
-    height: 9.5%;
     text-align: center;
+}
+
+.button-box img {
+    height: 100%
+}
+
+.science .button-box {
+    bottom: 4%;
+    text-align: right;
+    padding-right: 4%;
 }
 
 .button {
@@ -103,57 +177,6 @@ img {
     letter-spacing: 5px;
     font-weight: lighter;
     color: #1f8017;
-}
-
-/*进度条*/
-.process {
-    position: relative;
-    width: 75%;
-    height: 70px;
-    margin: 0 auto;
-    background: #e3ffe1;
-    border-radius: 33px;
-    box-shadow: 0 8px 10px -3px #63ac5e inset;
-    border: solid 2px #e3ffe1;
-}
-
-.process:after {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    border-radius: 33px;
-    box-shadow: 0 5px 3px 3px #157f3d;
-    content: '';
-}
-
-.process-bar {
-    position: absolute;
-    display: block;
-    bottom: 8%;
-    left: 0.5%;
-    z-index: 2;
-    height: 80%;
-    border-radius: 33px;
-    background: url("../img/process.jpg") 0 0 repeat-x;
-    background-size: auto 100%;
-}
-
-.process-bar:after {
-    position: absolute;
-    right: -70px;
-    top: -70px;
-    width: 210px;
-    height: 210px;
-    line-height: 210px;
-    font-size: 40px;
-    text-indent: 55px;
-    background: url("../img/sheep-icon.png") 0 0 no-repeat;
-    background-size: 100% 100%;
-    content: attr(data-per);
 }
 
 /*** 游戏结束 ***/
@@ -343,18 +366,6 @@ img {
 
 }
 
-.top-left {
-    top: -20px;
-    left: -20px;
-    background-image: url("../img/stop2.png");
-}
-
-.top-right {
-    top: -20px;
-    right: -20px;
-    background-image: url("../img/help.png");
-}
-
 .bottom-right {
     bottom: -20px;
     right: -20px;
@@ -364,34 +375,39 @@ img {
 .part-text {
     position: absolute;
     z-index: 1;
-    top: -20px;
-    width: 90%;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    padding-left: 18%;
+    text-align: center;
 
 }
 
 .part-text li {
     display: block;
-    float: right;
-    margin-right: 2%;
+    float: left;
+    margin-right: 5%;
     height: 100%;
-    padding: 2.5% 1.5% 0 1.5%;
+    min-width: 18%;
+    padding: 0 2%;
     background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 5px 5px -1px #157f3d;
-    font-weight: bold;
     color: #1f8017;
+}
 
+.part-text li > i {
+    padding-right: 15px;
+    color: #1f8017;
 }
 
 .part-text li span {
-    padding-left: 5px;
+
     color: #1f8017;
 }
 
 .part-text li .process-icon {
-    width: 200px;
-    height: 100%;
-    margin-right: 5px;
+
     float: left;
 }
 
@@ -548,12 +564,12 @@ img {
     top: 50%;
     right: 5%;
 }
+
 /** part-list3  右上左下排列  **/
 .part-list3 li {
     position: absolute;
 
 }
-
 
 .part-list3 li:nth-child(1) {
     top: 10%;
@@ -587,7 +603,6 @@ img {
 
 }
 
-
 .part-list4 li:nth-child(1) {
     top: -5%;
     left: 15%;
@@ -620,7 +635,6 @@ img {
 
 }
 
-
 .part-list5 li:nth-child(1) {
     top: 0%;
     right: 15%;
@@ -633,7 +647,7 @@ img {
 
 .part-list5 li:nth-child(3) {
     top: 30%;
-    right:55%;
+    right: 55%;
 }
 
 .part-list5 li:nth-child(4) {
@@ -686,7 +700,6 @@ img {
     position: absolute;
 
 }
-
 
 .part-list7 li:nth-child(1) {
     top: 0;

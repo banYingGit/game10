@@ -19,31 +19,38 @@
 
 </head>
 <body>
-<div class="screen screen1" id="screen1" style="display: block">
-    <div class="button-box button-pos-a">
-        <p class="button" id="goScreen2">进入训练</p>
+<div class="screen screen1" id="screen1" style="display:none ">
+    <div class="out-but" id="out"><img src="img/out.png"/></div>
+    <div class="button-box">
+        <img src="img/button1.png" id="goScreen2"/>
     </div>
 </div>
-<div class="screen" id="screen2">
-    <div class="box-bg">
-        青青草原上的羊有好多啊！为了管理羊群，你驯养了一只牧羊犬。你让牧羊犬走在羊群中间，羊群都比较调皮，往哪边跑的都有。你要在屏幕上划出牧羊犬的方向，羊群才会跟着他走。
-    </div>
-    <div class="process">
-        <div class="process-bar" style="width: 0" data-per="0" id="process"></div>
+<div class="screen " id="screen2">
+    <div class="science">
+        <div class="process">
+            <div class="process-bar" style="width: 0" data-per="0" id="process">
+                <p></p>
+            </div>
+        </div>
+        <div class="button-box">
+            <img src="img/button1.png" id="goScreen3" style="display: none"/>
+        </div>
     </div>
 
 </div>
-<div class="screen" id="screenPart" >
-    <div class="part-btn top-left" id="out"></div>
-    <div class="part-btn top-right" id="help"></div>
+<div class="screen" id="screenPart" style="display: block">
+
+    <!--<div id="help"></div>-->
     <div class="part-btn bottom-right" id="stop"></div>
     <ul class="part-text">
+        <li><i>时间</i> 0:<span id="time">45</span></li>
+        <li><i>得分</i> <span id="score">0</span></li>
         <li>
             <div class="process-icon" id="subPro"><i></i><i></i><i></i><i></i></div>
             <p class="max" id="level">0</p>
             <p class="max"></p></li>
-        <li>得分 <span id="score">0</span></li>
-        <li>时间 <span id="time">45</span> 秒</li>
+
+
     </ul>
     <div id="movePart">
         <div class="part">
@@ -53,7 +60,7 @@
     </div>
 </div>
 
-<div class="screen" id="helpBox" >
+<div class="screen" id="helpBox">
     <div class="icon-arrow img-box left">
         <img src="img/iconleft.png"/></div>
     <div class="icon-arrow img-box right">
@@ -109,15 +116,27 @@
 <script>
     var screenH = $(document).height()
 
-    $('.button').css({'font-size': screenH / 24})
+    $('.button-box').css({'height': screenH / 12})
+    $('.process').css({'height': screenH / 20})
+    $('.process-bar p').css({
+        'height': screenH / 8,
+        'line-height': screenH / 9 + 'px',
+        'width': screenH / 8,
+        'top': -screenH / 20,
+        'right': -screenH / 16,
+        'font-size': screenH / 32
+    })
+    $('.part-btn').css({'width': screenH / 6, 'height': screenH / 6})
+    $('.part-text').css({'height': screenH / 10, 'line-height': screenH / 10 + 'px', 'font-size': screenH / 28})
+    $('.process-icon i').css({'width': screenH / 22, 'height': screenH / 22})
+
     $('.box-bg').css({'font-size': screenH / 24})
     $('.box-bg h2').css({'font-size': screenH / 12})
     $('.sure-main h3').css({'font-size': screenH / 20})
     $('.sure-main .button').css({'font-size': screenH / 30})
     $('.box-bg .over-text1').css({'font-size': screenH / 18})
     $('.box-bg .over-text2').css({'font-size': screenH / 24})
-    $('.part-btn').css({'width': screenH / 6, 'height': screenH / 6})
-    $('.part-text').css({'height': screenH / 9, 'right': screenH / 6, 'font-size': screenH / 28})
+
     $('.help-list li').css('width', $(document).width())
 
 </script>

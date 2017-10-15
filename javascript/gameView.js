@@ -49,45 +49,47 @@ function _event() {
 
             i = i + 1
 
-            $('#process').css('width', i + '%').attr('data-per', i + '%')
+            $('#process').css('width', i + '%');
+
+            $('#process p').text(i + '%')
 
             if (i == 100) {
 
-                clearInterval(auotPro)
+                clearInterval(auotPro);
 
+                $('#goScreen3').show()
 
-                setTimeout(function () {
+                // setTimeout(function () {
+                //
 
-                    $('#screen2').empty().addClass('science')
-
-                }, 1000)
-
-                setTimeout(function () {
-
-                    $('#screen2').remove()
-
-                    $('#screenPart').show()
-
-                    _setPart()
-
-                    _moveZoo()
-
-                    _time(45, function () {
-                        _over()
-                    })
-
-
-                }, 8000)
-
+                //
+                //
+                // }, 8000)
 
             }
 
-        }
+        };
 
         auotPro = setInterval(timeFn, 100);
 
 
-    })
+    });
+
+    $('#goScreen3').click(function () {
+
+            $('#screen2').remove()
+
+            $('#screenPart').show()
+
+            _setPart()
+
+            _moveZoo()
+
+            // _time(45, function () {
+            //     _over()
+            // })
+
+    });
 
 
     $('#stop').click(function () {
