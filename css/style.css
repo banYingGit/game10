@@ -123,6 +123,10 @@ img {
     height: 100%
 }
 
+.button-box img:nth-last-child(1) {
+    margin-left: 5%;
+}
+
 .science .button-box {
     bottom: 4%;
     text-align: right;
@@ -159,27 +163,8 @@ img {
     left: 0;
 }
 
-/* 文字说明 */
-.box-bg {
-    position: relative;
-    z-index: 1;
-    width: 70%;
-    padding: 2.5% 5%;
-    margin: 12% auto 4% auto;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    color: #fff;
-    line-height: 200%;
-}
-
-.box-bg h2 {
-    text-align: center;
-    letter-spacing: 5px;
-    font-weight: lighter;
-    color: #1f8017;
-}
-
 /*** 游戏结束 ***/
+
 #overBox:after {
     position: absolute;
     top: 0;
@@ -191,30 +176,38 @@ img {
     content: '';
 }
 
-#overBox .box-bg {
-    background: rgba(255, 255, 255, 0.7);
+#overBox .over-box {
+    position: absolute;
+    width: 56%;
+    top: 20%;
+    left: 22%;
+    z-index: 1;
+
 }
 
-#overBox .over-text {
-    width: 60%;
-    margin: 6% auto 5% auto;
-    line-height: 120%;
-}
-
-#overBox .over-text:after {
-    clear: both;
+#overBox .over-box > img {
     display: block;
-    content: '';
+    width: 100%;
 }
 
-#overBox .over-text span {
+#overBox .over-box i {
+    position: absolute;
     display: block;
-    float: left;
+    right: 15%;
+    color: #1f8017;
+
 }
 
-#overBox .over-text i {
-    display: block;
-    float: right;
+#getScore {
+    bottom: 39%;
+}
+
+#getNum {
+    bottom: 24.5%;
+}
+
+#getPerc {
+    bottom: 11%;
 }
 
 /** 游戏暂停 **/
@@ -236,13 +229,49 @@ img {
 }
 
 .continue {
-    width: 12%;
-    margin: 15% auto 2% auto;
+    position: absolute;
+    top: 25%;
+    left: 43%;
+    width: 14%;
 }
 
 .out {
-    width: 7%;
-    margin: 0 auto;
+    position: absolute;
+    bottom: 40%;
+    left: 28%;
+    width: 8%;
+}
+
+.help {
+    position: absolute;
+    bottom: 40%;
+    right: 28%;
+    width: 8%;
+}
+
+/**游戏介绍**/
+.introduce-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 78, 9, 0.8);
+}
+
+.introduce-main {
+    position: absolute;
+    top: 22%;
+    left: 20%;
+    z-index: 1;
+    width: 60%;
+}
+
+.introduce-main > img {
+    display: block;
+    width: 100%;
 }
 
 /**确认退出**/
@@ -258,32 +287,17 @@ img {
 }
 
 .sure-main {
-    position: relative;
+    position: absolute;
+    top: 30%;
+    left: 25%;
     z-index: 1;
-    width: 50%;
-    padding: 3% 5% 5% 5%;
-    margin: 20% auto 4% auto;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
-    color: #fff;
+    width: 55%;
 
 }
 
-.sure-main h3 {
-    text-align: center;
-    letter-spacing: 5px;
-    font-weight: lighter;
-    color: #1f8017;
-    line-height: 300%;
-}
-
-.sure-main .button-box {
-    height: 5%
-}
-
-.sure-main .button {
-    padding: 0 50px;
-    line-height: 90px;
+.sure-main > img {
+    display: block;
+    width: 100%;
 }
 
 /**帮助画面**/
@@ -409,6 +423,7 @@ img {
 .part-text li .process-icon {
 
     float: left;
+    margin: 10% 10px 0 0;
 }
 
 .part-text li .process-icon i {
@@ -429,6 +444,13 @@ img {
     display: block;
     float: left;
     color: #1f8017;
+}
+
+.part-text li .huo-miao {
+    display: block;
+    float: left;
+    height: 80%;
+    margin-top: 4%;
 }
 
 /** 羊与狗 **/
@@ -453,275 +475,280 @@ img {
     height: 100%;
 }
 
-.part-list li {
+.part-list > p {
+    position: relative;
+}
+
+.part-list > p .language {
+    position: absolute;
+    top: -100%;
+    left: -100%;
     display: block;
-    background-repeat: no-repeat;
-    background-position: center;
+    width: 100%;
 }
 
-.part-list li.st {
-
-    background-image: url("../img/st.png");
-
+.part-list > p .language img {
+    display: block;
+    width: 100%;
+    /*opacity: 0;*/
+    /*animation: change .9s ease;*/
+    /*-webkit-animation: change .9s linear;*/
 }
 
-.part-list li.sr {
-    background-image: url("../img/sr.png");
+/*@keyframes change {*/
+/*from {*/
+/*width: 0;*/
+/*opacity: 1;*/
+/*}*/
+/*to {*/
+/*width: 100%;*/
+/*opacity: 0;*/
+/*}*/
+/*}*/
 
+/*@-webkit-keyframes change {*/
+/*from {*/
+/*width: 0;*/
+/*opacity: 1;*/
+/*}*/
+/*to {*/
+/*width: 100%;*/
+/*opacity: 0;*/
+/*}*/
+/*}*/
+
+.part-list > p > img {
+    display: block;
+    width: 100%;
 }
 
-.part-list li.sb {
-    background-image: url("../img/sb.png");
-
+.part-list > p.sb, .part-list > p.st, .part-list > p.sl, .part-list > p.sr {
+    width: 18%;
 }
 
-.part-list li.sl {
-    background-image: url("../img/sl.png");
+.part-list > p.db, .part-list > p.dt, .part-list > p.dl, .part-list > p.dr {
+    width: 23%;
 
-}
-
-.part-list li.dt {
-    background-image: url("../img/dt.png");
-}
-
-.part-list li.dr {
-    background-image: url("../img/dr.png");
-
-}
-
-.part-list li.db {
-    background-image: url("../img/db.png");
-
-}
-
-.part-list li.dl {
-    background-image: url("../img/dl.png");
-
-}
-
-.part-list li.st, .part-list li.sb {
-    background-size: auto 90%;
-}
-
-.part-list li.sl, .part-list li.sr {
-    background-size: 90% auto;
-}
-
-.part-list li.dt, .part-list li.db {
-    background-size: auto 100%;
-}
-
-.part-list li.dl, .part-list li.dr {
-    background-size: 100% auto;
 }
 
 /** part-list1  一字形排列  **/
 .part-list1 {
-    padding-top: 15%;
-    box-sizing: border-box;
+    text-align: center;
 }
 
-.part-list1 li {
-    float: left;
-}
-
-.part-list1 li.dt, .part-list1 li.db {
-    margin-top: -15px;
-    height: 65%;
-    background-size: auto 100%;
-}
-
-.part-list1 li.dl, .part-list1 li.dr {
-    background-size: 100% auto;
+.part-list1 p {
+    display: inline-block;
+    margin-left: -1%;
 }
 
 /** part-list2  左上右下排列  **/
-.part-list2 li {
+.part-list2 p {
     position: absolute;
+    display: block;
 }
 
-.part-list2 li:nth-child(1) {
-    top: 10%;
-    left: 5%;
+.part-list2 p:nth-child(1) {
+    top: 0;
+    left: 10%;
 }
 
-.part-list2 li:nth-child(2) {
-    top: 20%;
-    left: 24%;
+.part-list2 p:nth-child(2) {
+    top: 15%;
+    left: 25%;
 }
 
-.part-list2 li:nth-child(3) {
+.part-list2 p:nth-child(3) {
     top: 30%;
     left: 40%;
 }
 
-.part-list2 li:nth-child(4) {
-    top: 40%;
-    right: 24%;
+.part-list2 p:nth-child(4) {
+    top: 45%;
+    left: 55%;
 }
 
-.part-list2 li:nth-child(5) {
-    top: 50%;
-    right: 5%;
+.part-list2 p:nth-child(5) {
+    top: 60%;
+    left: 70%;
+}
+
+.part-list2 p.dr, .part-list2 p.dl {
+
+    margin-left: -5%;
 }
 
 /** part-list3  右上左下排列  **/
-.part-list3 li {
+.part-list3 p {
     position: absolute;
+    display: block;
 
 }
 
-.part-list3 li:nth-child(1) {
-    top: 10%;
-    right: 0;
+.part-list3 p:nth-child(1) {
+    bottom: 5%;
+    left: 10%;
 }
 
-.part-list3 li:nth-child(2) {
-    top: 20%;
-    right: 20%;
+.part-list3 p:nth-child(2) {
+    bottom: 20%;
+    left: 27%;
 }
 
-.part-list3 li:nth-child(3) {
-    top: 30%;
-    right: 40%;
+.part-list3 p:nth-child(3) {
+    bottom: 35%;
+    left: 44%;
 }
 
-.part-list3 li:nth-child(4) {
-    top: 40%;
-    right: 60%;
+.part-list3 p:nth-child(4) {
+    bottom: 50%;
+    left: 61%;
 }
 
-.part-list3 li:nth-child(5) {
-    top: 50%;
-    right: 80%;
+.part-list3 p:nth-child(5) {
+    bottom: 65%;
+    left: 78%;
+}
+
+.part-list3 p.dr, .part-list3 p.dl {
+    margin-bottom: -5%;
 }
 
 /** part-list4  箭头向左排列  **/
 
-.part-list4 li {
+.part-list4 p {
     position: absolute;
 
 }
 
-.part-list4 li:nth-child(1) {
+.part-list4 p:nth-child(1) {
     top: -5%;
     left: 15%;
 }
 
-.part-list4 li:nth-child(2) {
-    top: 8%;
+.part-list4 p:nth-child(2) {
+    top: 10%;
     left: 35%;
 }
 
-.part-list4 li:nth-child(3) {
+.part-list4 p:nth-child(3) {
     top: 30%;
     left: 55%;
 }
 
-.part-list4 li:nth-child(4) {
-    bottom: 8%;
+.part-list4 p:nth-child(4) {
+    bottom: 10%;
     left: 35%;
 }
 
-.part-list4 li:nth-child(5) {
+.part-list4 p:nth-child(5) {
     bottom: -5%;
     left: 15%;
 }
 
+.part-list4 p.dr, .part-list4 p.dl {
+
+    margin-top: -5%;
+}
+
 /** part-list5  箭头向右排列  **/
 
-.part-list5 li {
+.part-list5 p {
     position: absolute;
 
 }
 
-.part-list5 li:nth-child(1) {
+.part-list5 p:nth-child(1) {
     top: 0%;
     right: 15%;
 }
 
-.part-list5 li:nth-child(2) {
+.part-list5 p:nth-child(2) {
     top: 10%;
     right: 35%;
 }
 
-.part-list5 li:nth-child(3) {
+.part-list5 p:nth-child(3) {
     top: 30%;
     right: 55%;
 }
 
-.part-list5 li:nth-child(4) {
+.part-list5 p:nth-child(4) {
     bottom: 10%;
     right: 35%;
 }
 
-.part-list5 li:nth-child(5) {
+.part-list5 p:nth-child(5) {
     bottom: 0%;
     right: 15%;
 }
 
 /** part-list6  箭头向上排列  **/
-.part-list6 li {
+.part-list6 p {
     position: absolute;
 
 }
 
-.part-list6 li:nth-child(1) {
+.part-list6 p:nth-child(1) {
     bottom: 10%;
-    left: 5%;
+    left: 10%;
 }
 
-.part-list6 li:nth-child(2) {
-    bottom: 25%;
+.part-list6 p:nth-child(2) {
+    bottom: 30%;
     left: 25%;
 }
 
-.part-list6 li:nth-child(3) {
-    top: 10%;
+.part-list6 p:nth-child(3) {
+    bottom: 50%;
     left: 40%;
 }
 
-.part-list6 li:nth-child(4) {
-    bottom: 25%;
+.part-list6 p:nth-child(4) {
+    bottom: 30%;
     right: 25%;
 }
 
-.part-list6 li:nth-child(5) {
+.part-list6 p:nth-child(5) {
     bottom: 10%;
-    right: 5%;
+    right: 10%;
+}
+
+.part-list6 p.dr, .part-list6 p.dl {
+    margin-bottom: -5%;
 }
 
 /** part-list7  箭头向下排列  **/
-.part-list7 {
-    margin-top: 5%;
-}
 
-.part-list7 li {
+.part-list7 p {
     position: absolute;
 
 }
 
-.part-list7 li:nth-child(1) {
-    top: 0;
-    left: 5%;
+.part-list7 p:nth-child(1) {
+    top: 10%;
+    left: 10%;
 }
 
-.part-list7 li:nth-child(2) {
-    top: 20%;
+.part-list7 p:nth-child(2) {
+    top: 30%;
     left: 25%;
 }
 
-.part-list7 li:nth-child(3) {
-    bottom: 20%;
+.part-list7 p:nth-child(3) {
+    top: 50%;
     left: 40%;
 }
 
-.part-list7 li:nth-child(4) {
-    top: 20%;
+.part-list7 p:nth-child(4) {
+    top: 30%;
     right: 25%;
 }
 
-.part-list7 li:nth-child(5) {
-    top: 0;
-    right: 5%;
+.part-list7 p:nth-child(5) {
+    top: 10%;
+    right: 10%;
+}
+
+.part-list7 p.dr, .part-list7 p.dl {
+    margin-top: -7%;
 }

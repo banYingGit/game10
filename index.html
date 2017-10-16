@@ -13,14 +13,11 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     <title>青春草原 </title>
     <link rel="stylesheet" href="css/style.css">
-
     <script src="javascript/jquery-2.1.3.js"></script>
-
-
 </head>
 <body>
-<div class="screen screen1" id="screen1" style="display:none ">
-    <div class="out-but" id="out"><img src="img/out.png"/></div>
+<div class="screen screen1" id="screen1"  style="display: block">
+    <div class="out-but" data-role="confirmExit"><img src="img/out.png"/></div>
     <div class="button-box">
         <img src="img/button1.png" id="goScreen2"/>
     </div>
@@ -36,11 +33,9 @@
             <img src="img/button1.png" id="goScreen3" style="display: none"/>
         </div>
     </div>
-
 </div>
-<div class="screen" id="screenPart" style="display: block">
 
-    <!--<div id="help"></div>-->
+<div class="screen" id="screenPart">
     <div class="part-btn bottom-right" id="stop"></div>
     <ul class="part-text">
         <li><i>时间</i> 0:<span id="time">45</span></li>
@@ -48,14 +43,12 @@
         <li>
             <div class="process-icon" id="subPro"><i></i><i></i><i></i><i></i></div>
             <p class="max" id="level">0</p>
-            <p class="max"></p></li>
-
-
+            <img src="img/flames/huomiao_0.png" class="huo-miao"/></li>
     </ul>
     <div id="movePart">
         <div class="part">
-            <ul class="part-list" id="zoo">
-            </ul>
+            <div class="part-list" id="zoo">
+            </div>
         </div>
     </div>
 </div>
@@ -76,38 +69,47 @@
         <li class="help3"></li>
     </ul>
 </div>
+
+
+<div id="introduceBox" class="introduce-box">
+    <div class="introduce-main">
+        <img src="img/text3.png"/>
+
+    </div>
+    <div class="button-box">
+        <img src="img/button5.png" id="introduceContinue"/>
+    </div>
+</div>
+
 <div id="sureBox" class="sure-box">
-
     <div class="sure-main">
-        <h3>确认退出吗？</h3>
-
-        <div class="button-box button-box-s">
-            <p class="button button2" id="cancelOut">取 消</p>
-            <p class="button" data-role="out">确 定</p>
+        <img src="img/text1.png"/>
+        <div class="button-box">
+            <img src="img/button2.png" data-role="out"/>
+            <img src="img/button3.png" id="cancelOut"/>
         </div>
     </div>
-
 </div>
 
 
 <div id="stopBox" class="stop-box">
     <div id="continue" class="continue">
-
-        <img src="img/continue.png"/></div>
-    <div class="out" data-role="out"><img src="img/out.png"/></div>
+        <img src="img/continue.png"/>
+    </div>
+    <div class="out" data-role="out"><img src="img/out2.png"/></div>
+    <div class="help" id="help"><img src="img/help.png"/></div>
 </div>
 
 <div class="screen" id="overBox">
 
-    <div class="box-bg">
-        <h2>牧羊犬</h2>
-        <div class="over-text over-text1"><span>得&nbsp;&nbsp;&nbsp;&nbsp;分 </span><i id="getScore">0</i></div>
-        <div class="over-text over-text2"><span>判断次数 </span><i id="getNum">0</i></div>
-        <div class="over-text over-text2"><span>正&nbsp;  确&nbsp;  率 </span><i id="getPerc">0%</i></div>
+    <div class="over-box">
+        <img src="img/text2.png"/>
+        <i id="getScore">0</i>
+        <i id="getNum">0</i>
+        <i id="getPerc">0%</i>
     </div>
-
     <div class="button-box">
-        <p class="button">确 定</p>
+        <img src="img/button4.png" data-role="out"/>
     </div>
 </div>
 
@@ -130,12 +132,9 @@
     $('.part-text').css({'height': screenH / 10, 'line-height': screenH / 10 + 'px', 'font-size': screenH / 28})
     $('.process-icon i').css({'width': screenH / 22, 'height': screenH / 22})
 
-    $('.box-bg').css({'font-size': screenH / 24})
-    $('.box-bg h2').css({'font-size': screenH / 12})
-    $('.sure-main h3').css({'font-size': screenH / 20})
-    $('.sure-main .button').css({'font-size': screenH / 30})
-    $('.box-bg .over-text1').css({'font-size': screenH / 18})
-    $('.box-bg .over-text2').css({'font-size': screenH / 24})
+
+    $('#getScore').css({'font-size': screenH / 12})
+    $('#getNum,#getPerc').css({'font-size': screenH / 20})
 
     $('.help-list li').css('width', $(document).width())
 

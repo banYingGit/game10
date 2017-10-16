@@ -1,9 +1,4 @@
-﻿/**
- *
- */
-
-
-/* 全局变量
+﻿/* 全局变量
  * autoTime：倒计时
  * layout：界面排列方式
  * dog ：狗
@@ -34,8 +29,17 @@ var autoTime,
 
 _event();
 
+
 // 游戏内事件处理
 function _event() {
+
+
+    $('div[data-role="confirmExit"]').click(function () {
+
+        $('#sureBox').show()
+
+    });
+
 
     $('#goScreen2').click(function () {
 
@@ -59,35 +63,43 @@ function _event() {
 
                 $('#goScreen3').show()
 
-                // setTimeout(function () {
-                //
-
-                //
-                //
-                // }, 8000)
-
             }
 
         };
 
-        auotPro = setInterval(timeFn, 100);
+        //100>>>>>10
+        auotPro = setInterval(timeFn, 10);
 
 
     });
 
     $('#goScreen3').click(function () {
 
-            $('#screen2').remove()
+        $('#screen2').remove()
 
-            $('#screenPart').show()
+        $('#screenPart').show()
 
-            _setPart()
+        _setPart()
 
-            _moveZoo()
 
-            // _time(45, function () {
-            //     _over()
-            // })
+        setTimeout(function () {
+
+            $('#introduceBox').show()
+
+        }, 0)
+
+
+    });
+
+    $('#introduceContinue').click(function () {
+
+        $('#introduceBox').remove()
+
+        _moveZoo()
+
+        _time(45, function () {
+            _over()
+        })
 
     });
 
@@ -148,6 +160,11 @@ function _event() {
         _out()
     })
 
+    $('#cancelOut').click(function () {
+
+        $('#sureBox').hide()
+
+    })
 
     _moveHelp()
 
@@ -212,32 +229,37 @@ function _moveZoo() {
 
         if (curIsTure == '') return;
 
-        setTimeout(function () {
+        var $elS = $('img[data-role="s"]'),
 
-            if (curIsTure == "yes") {
+            $srcS = $elS.parent('p').attr('class'),
 
-                $('#subPro i').eq(curSub).addClass("active")
+            $srcSCom = "img/error/" + $srcS + "/yangtiaodong_",
 
-                curSub = curSub + 1
+            $elD = $('img[data-role="d"]'),
 
-                scoreSum = scoreSum + 100
+            $srcD = $elD.parent('p').attr('class'),
 
-                setCorrect = setCorrect + 1
+            $srcDCom = "img/error/" + $srcD + "/gouyaotou_";
 
-                if (curSub >= 4) {
+        $('img[data-role="d"]').parent('p').append('<span id="language" class="language"><img src=""></span>')
 
-                    scoreSum = scoreSum + 50;
+        var $elLanguage = $('#language').children("img");
 
-                    level = level + 1
+        if (curIsTure == "yes") {
 
-                    $('#subPro i').removeClass("active")
+            $('#subPro i').eq(curSub).addClass("active")
 
-                    curSub = 0
+            curSub = curSub + 1
 
-                }
+            scoreSum = scoreSum + 100
 
-            }
-            else if (curIsTure == "no") {
+            setCorrect = setCorrect + 1
+
+            if (curSub >= 4) {
+
+                scoreSum = scoreSum + 50;
+
+                level = level + 1
 
                 $('#subPro i').removeClass("active")
 
@@ -245,16 +267,45 @@ function _moveZoo() {
 
             }
 
+        }
+        else if (curIsTure == "no") {
 
-            setNum = setNum + 1
+            $('#subPro i').removeClass("active")
 
-            $('#score').text(scoreSum)
+            curSub = 0
 
-            $('#level').text(level)
+
+            _setAnimation($elS, 9, $srcSCom, 60, false)
+
+            _setAnimation($elD, 9, $srcDCom, 30, true)
+
+            var $srcLanguage = "img/error/text/wu_";
+
+
+            _setAnimation($elLanguage, 2, $srcLanguage, 800, false, function () {
+
+                setTimeout(function () {
+
+                    $('img[data-role="d"]').siblings('#language').animate({'opacity': 0}, 1000)
+
+                }, 100)
+            })
+
+
+        }
+
+
+        setNum = setNum + 1
+
+        $('#score').text(scoreSum)
+
+        $('#level').text(level)
+
+        setTimeout(function () {
 
             _setPart(scoreSum)
 
-        }, 500)
+        }, 2000)
 
 
     })
@@ -401,9 +452,7 @@ function _where(x, y, fn) {
 
 function _setPart() {
 
-    $('#zoo').empty()
-
-    $('#zoo').removeClass().addClass('part-list')
+    $('#zoo').empty().removeClass().addClass('part-list')
 
     $('#screenPart').css({'pointer-events': ''})
 
@@ -425,7 +474,9 @@ function _setPart() {
 
     for (var i = 0; i < $zoo.length; i++) {
 
-        $('#zoo').append('<li class="' + $zoo[i] + '">')
+        console.log(' $zoo[i].substr(0, 0)', $zoo[i].substr(0, 1))
+
+        $('#zoo').append('<p  class="' + $zoo[i] + '" ><img src="img/' + $zoo[i] + '.png"  data-role="' + $zoo[i].substr(0, 1) + '"></p>')
 
     }
 
@@ -496,6 +547,66 @@ function _getArrayItems(arr, num) {
     return return_array;
 }
 
+
+/*** 动画
+ * el：元素选择器
+ * num：帧数
+ * src: 图片路径
+ * speed: 播放速度
+ * loop:循环播放
+ *  fn：动画播放结束回调
+ ***/
+function _setAnimation(el, num, src, speed, loop, fn) {
+
+    var $el = el,
+
+        lastTime = Date.now(),
+
+        deltaTime = 0,
+
+        jianGeTime = 0,
+
+        imgIndex = 0;
+
+    var animation = function () {
+
+        window.requestAnimationFrame(animation);
+
+        var now = Date.now();
+
+        deltaTime = now - lastTime;
+
+        lastTime = Date.now();
+
+        jianGeTime += deltaTime;
+
+        if (jianGeTime > speed) {
+
+            jianGeTime = 0;
+
+            imgIndex++;
+
+            if (loop) {
+
+                if (imgIndex > num) imgIndex = 0;
+
+            } else {
+
+                if (imgIndex > num) {
+
+                    imgIndex = imgIndex - 1;
+
+                    fn && fn.call(this)
+                }
+
+            }
+            $el.attr('src', src + imgIndex + ".png");
+        }
+    };
+
+    animation();
+
+}
 
 //游戏结束
 function _over() {
