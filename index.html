@@ -16,7 +16,7 @@
     <script src="javascript/jquery-2.1.3.js"></script>
 </head>
 <body>
-<div class="screen screen1" id="screen1"  style="display: block">
+<div class="screen screen1" id="screen1" style="display: block">
     <div class="out-but" data-role="confirmExit"><img src="img/out.png"/></div>
     <div class="button-box">
         <img src="img/button1.png" id="goScreen2"/>
@@ -41,9 +41,14 @@
         <li><i>时间</i> 0:<span id="time">45</span></li>
         <li><i>得分</i> <span id="score">0</span></li>
         <li>
-            <div class="process-icon" id="subPro"><i></i><i></i><i></i><i></i></div>
+            <div class="process-icon" id="subPro">
+                <img src="img/icon1s.png"/>
+                <img src="img/icon1s.png"/>
+                <img src="img/icon1s.png"/>
+                <img src="img/icon1s.png"/>
+            </div>
             <p class="max" id="level">0</p>
-            <img src="img/flames/huomiao_0.png" class="huo-miao"/></li>
+            <img src="img/icon3.png" class="huo-miao" id="fire"/></li>
     </ul>
     <div id="movePart">
         <div class="part">
@@ -128,9 +133,9 @@
         'right': -screenH / 16,
         'font-size': screenH / 32
     })
-    $('.part-btn').css({'width': screenH / 6, 'height': screenH / 6})
-    $('.part-text').css({'height': screenH / 10, 'line-height': screenH / 10 + 'px', 'font-size': screenH / 28})
-    $('.process-icon i').css({'width': screenH / 22, 'height': screenH / 22})
+    $('.part-btn').css({'width': screenH / 8, 'height': screenH / 8})
+    $('.part-text').css({'height': screenH / 12, 'line-height': screenH / 12 + 'px', 'font-size': screenH / 28})
+    $('.process-icon img').css({'width': screenH / 12, 'height': screenH / 12, 'margin-left': -(screenH / 24)})
 
 
     $('#getScore').css({'font-size': screenH / 12})

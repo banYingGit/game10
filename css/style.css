@@ -372,7 +372,7 @@ img {
     position: absolute;
     z-index: 5;
     background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 5px 5px -1px #157f3d;
     background-size: 60% 60%;
     background-repeat: no-repeat;
@@ -381,8 +381,8 @@ img {
 }
 
 .bottom-right {
-    bottom: -20px;
-    right: -20px;
+    bottom: -7px;
+    right: -7px;
     background-image: url("../img/stop1.png");
 }
 
@@ -423,21 +423,14 @@ img {
 .part-text li .process-icon {
 
     float: left;
-    margin: 10% 10px 0 0;
-}
-
-.part-text li .process-icon i {
-    display: block;
-    float: left;
-    width: 50px;
+    margin: 0 -15px 0 30px;
     height: 100%;
-    background: url("../img/icon1s.png") center 10px no-repeat;
-    background-size: 70%;
 }
 
-.part-text li .process-icon i.active {
-    background: url("../img/icon1.png") center 10px no-repeat;
-    background-size: 70%;
+.part-text li .process-icon img {
+
+    vertical-align: middle;
+
 }
 
 .part-text li p.max {
@@ -481,8 +474,8 @@ img {
 
 .part-list > p .language {
     position: absolute;
-    top: -100%;
-    left: -100%;
+    top: -25%;
+    left: -25%;
     display: block;
     width: 100%;
 }

@@ -26,7 +26,7 @@ var autoTime,
     setNum = 0,
     setCorrect = 0;
 
-
+var animation
 _event();
 
 
@@ -229,17 +229,11 @@ function _moveZoo() {
 
         if (curIsTure == '') return;
 
-        var $elS = $('img[data-role="s"]'),
-
-            $srcS = $elS.parent('p').attr('class'),
-
-            $srcSCom = "img/error/" + $srcS + "/yangtiaodong_",
-
-            $elD = $('img[data-role="d"]'),
+        var $elD = $('img[data-role="d"]'),
 
             $srcD = $elD.parent('p').attr('class'),
 
-            $srcDCom = "img/error/" + $srcD + "/gouyaotou_";
+            $srcDCom = "img/error/" + $srcD + "/d_";
 
         $('img[data-role="d"]').parent('p').append('<span id="language" class="language"><img src=""></span>')
 
@@ -247,7 +241,7 @@ function _moveZoo() {
 
         if (curIsTure == "yes") {
 
-            $('#subPro i').eq(curSub).addClass("active")
+            $('#subPro img').eq(curSub).attr("src", "img/icon1.png")
 
             curSub = curSub + 1
 
@@ -261,35 +255,40 @@ function _moveZoo() {
 
                 level = level + 1
 
-                $('#subPro i').removeClass("active")
+                var $elP = $('#subPro img'),
+
+                    $srcP = "img/icon1/dianfaguang_";
+
+                _setAnimation($elP, 9, $srcP, 30, true)
+
+                var $elF = $('#fire'),
+
+                    $secF = 'img/flames/huomiao_';
+
+                _setAnimation($elF, 16, $secF, 30, true)
 
                 curSub = 0
 
+            } else if (curSub == 1) {
+
+                $('#subPro img').attr("src", "img/icon1s.png")
+
+                $('#subPro img').eq(0).attr("src", "img/icon1.png")
             }
+
 
         }
         else if (curIsTure == "no") {
 
-            $('#subPro i').removeClass("active")
+            $('#subPro img').attr("src", "img/icon1s.png")
 
-            curSub = 0
+            curSub = 0;
 
-
-            _setAnimation($elS, 9, $srcSCom, 60, false)
-
-            _setAnimation($elD, 9, $srcDCom, 30, true)
+            _setAnimation($elD, 13, $srcDCom, 30, true);
 
             var $srcLanguage = "img/error/text/wu_";
 
-
-            _setAnimation($elLanguage, 2, $srcLanguage, 800, false, function () {
-
-                setTimeout(function () {
-
-                    $('img[data-role="d"]').siblings('#language').animate({'opacity': 0}, 1000)
-
-                }, 100)
-            })
+            // _setAnimation($elLanguage, 2, $srcLanguage, 400, false)
 
 
         }
@@ -303,9 +302,10 @@ function _moveZoo() {
 
         setTimeout(function () {
 
+            // window.cancelAnimationFrame(animation);
             _setPart(scoreSum)
 
-        }, 2000)
+        }, 1500)
 
 
     })
@@ -556,8 +556,9 @@ function _getArrayItems(arr, num) {
  * loop:循环播放
  *  fn：动画播放结束回调
  ***/
-function _setAnimation(el, num, src, speed, loop, fn) {
+function _setAnimation(el, num, src, speed, loop) {
 
+    console.log('speed', speed)
     var $el = el,
 
         lastTime = Date.now(),
@@ -568,7 +569,7 @@ function _setAnimation(el, num, src, speed, loop, fn) {
 
         imgIndex = 0;
 
-    var animation = function () {
+    animation = function () {
 
         window.requestAnimationFrame(animation);
 
@@ -596,7 +597,7 @@ function _setAnimation(el, num, src, speed, loop, fn) {
 
                     imgIndex = imgIndex - 1;
 
-                    fn && fn.call(this)
+                    // fn && fn.call(this)
                 }
 
             }
