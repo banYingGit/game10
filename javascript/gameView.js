@@ -26,7 +26,9 @@ var autoTime,
     setNum = 0,
     setCorrect = 0;
 
-var animation
+
+var dagAnimation, textAnimation, flamesAnimation, iconAnimation
+
 _event();
 
 
@@ -55,7 +57,7 @@ function _event() {
 
             $('#process').css('width', i + '%');
 
-            $('#process p').text(i + '%')
+            $('#process p').text(i + '%');
 
             if (i == 100) {
 
@@ -81,12 +83,13 @@ function _event() {
 
         _setPart()
 
+        $('#screenPart').css({'pointer-events': "none"})
 
         setTimeout(function () {
 
             $('#introduceBox').show()
 
-        }, 0)
+        }, 1000)
 
 
     });
@@ -95,6 +98,7 @@ function _event() {
 
         $('#introduceBox').remove()
 
+        $('#screenPart').css({'pointer-events': ""})
         _moveZoo()
 
         _time(45, function () {
@@ -148,8 +152,6 @@ function _event() {
     $('#help').click(function () {
 
         $('#helpBox').show()
-
-        $('#screenPart').hide()
 
         clearInterval(autoTime)
 
@@ -231,13 +233,16 @@ function _moveZoo() {
 
         var $elD = $('img[data-role="d"]'),
 
-            $srcD = $elD.parent('p').attr('class'),
-
-            $srcDCom = "img/error/" + $srcD + "/d_";
+            $srcD = $elD.parent('p').attr('class');
 
         $('img[data-role="d"]').parent('p').append('<span id="language" class="language"><img src=""></span>')
 
         var $elLanguage = $('#language').children("img");
+
+        clearInterval(iconAnimation)
+
+        clearInterval(flamesAnimation)
+
 
         if (curIsTure == "yes") {
 
@@ -249,23 +254,24 @@ function _moveZoo() {
 
             setCorrect = setCorrect + 1
 
+            var $srcDCom = "img/success/" + $srcD + "/d_";
+
+            var $srcLanguage = "img/success/text/wang_";
+
+            _dagAnimation($elD, 24, $srcDCom);
+
+            _textAnimation($elLanguage, $srcLanguage)
+
+
             if (curSub >= 4) {
 
                 scoreSum = scoreSum + 50;
 
-                level = level + 1
+                level = level + 1;
 
-                var $elP = $('#subPro img'),
+                _flamesAnimation()
 
-                    $srcP = "img/icon1/dianfaguang_";
-
-                _setAnimation($elP, 9, $srcP, 30, true)
-
-                var $elF = $('#fire'),
-
-                    $secF = 'img/flames/huomiao_';
-
-                _setAnimation($elF, 16, $secF, 30, true)
+                _iconAnimation()
 
                 curSub = 0
 
@@ -274,6 +280,9 @@ function _moveZoo() {
                 $('#subPro img').attr("src", "img/icon1s.png")
 
                 $('#subPro img').eq(0).attr("src", "img/icon1.png")
+
+                $('#fire').attr("src", "img/icon3.png")
+
             }
 
 
@@ -284,12 +293,13 @@ function _moveZoo() {
 
             curSub = 0;
 
-            _setAnimation($elD, 13, $srcDCom, 30, true);
+            var $srcDCom = "img/error/" + $srcD + "/d_";
 
             var $srcLanguage = "img/error/text/wu_";
 
-            // _setAnimation($elLanguage, 2, $srcLanguage, 400, false)
+            _dagAnimation($elD, 13, $srcDCom);
 
+            _textAnimation($elLanguage, $srcLanguage)
 
         }
 
@@ -302,7 +312,7 @@ function _moveZoo() {
 
         setTimeout(function () {
 
-            // window.cancelAnimationFrame(animation);
+
             _setPart(scoreSum)
 
         }, 1500)
@@ -377,13 +387,6 @@ function _moveHelp() {
             } else if ($moveIndex >= 2) {
                 $('#helpBox').hide()
 
-                $('#screenPart').show()
-
-                _time($('#time').text(), function () {
-
-                    _over()
-
-                })
             }
 
         }
@@ -548,17 +551,13 @@ function _getArrayItems(arr, num) {
 }
 
 
-/*** 动画
- * el：元素选择器
+/*** _dagAnimation 小狗动画
+ * el  元素
  * num：帧数
  * src: 图片路径
- * speed: 播放速度
- * loop:循环播放
- *  fn：动画播放结束回调
  ***/
-function _setAnimation(el, num, src, speed, loop) {
+function _dagAnimation(el, num, src) {
 
-    console.log('speed', speed)
     var $el = el,
 
         lastTime = Date.now(),
@@ -569,9 +568,9 @@ function _setAnimation(el, num, src, speed, loop) {
 
         imgIndex = 0;
 
-    animation = function () {
+    dagAnimation = function () {
 
-        window.requestAnimationFrame(animation);
+        window.requestAnimationFrame(dagAnimation);
 
         var now = Date.now();
 
@@ -581,31 +580,125 @@ function _setAnimation(el, num, src, speed, loop) {
 
         jianGeTime += deltaTime;
 
-        if (jianGeTime > speed) {
+        if (jianGeTime > 30) {
 
             jianGeTime = 0;
 
             imgIndex++;
 
-            if (loop) {
+            if (imgIndex > num) imgIndex = 0;
 
-                if (imgIndex > num) imgIndex = 0;
 
-            } else {
-
-                if (imgIndex > num) {
-
-                    imgIndex = imgIndex - 1;
-
-                    // fn && fn.call(this)
-                }
-
-            }
             $el.attr('src', src + imgIndex + ".png");
         }
     };
 
-    animation();
+    dagAnimation();
+
+}
+
+/*** _textAnimation 小狗语言动画
+ * el  元素
+ * src: 图片路径
+ ***/
+function _textAnimation(el, src) {
+
+    var $el = el,
+
+        lastTime = Date.now(),
+
+        deltaTime = 0,
+
+        jianGeTime = 0,
+
+        imgIndex = 0;
+
+    textAnimation = function () {
+
+        window.requestAnimationFrame(textAnimation);
+
+        var now = Date.now();
+
+        deltaTime = now - lastTime;
+
+        lastTime = Date.now();
+
+        jianGeTime += deltaTime;
+
+        if (jianGeTime > 300) {
+
+            jianGeTime = 0;
+
+            imgIndex++;
+
+            if (imgIndex > 2) {
+
+                imgIndex = imgIndex - 1;
+
+                $el.animate({'opacity': 0}, 500)
+            }
+
+            $el.attr('src', src + imgIndex + ".png");
+        }
+    };
+
+    textAnimation();
+
+}
+
+
+function _flamesAnimation() {
+
+    var $el = $('#fire'),
+
+        indexI = 0;
+
+
+    var flamesFn = function () {
+
+        indexI = indexI + 1;
+
+        $el.attr('src', "img/flames/f_" + indexI + ".png");
+
+        if (indexI >= 16) {
+
+            indexI = 0;
+
+            // clearInterval(flamesAnimation)
+        }
+
+    };
+
+    flamesAnimation = setInterval(flamesFn, 100);
+
+}
+
+
+function _iconAnimation() {
+
+
+    var $el = $('#subPro img'),
+
+        indexI = 0;
+
+
+    var iconFn = function () {
+
+        indexI = indexI + 1;
+
+        $el.attr('src', "img/icon1/i_" + indexI + ".png");
+
+        if (indexI >= 9) {
+
+            indexI = 0;
+
+            // clearInterval(iconAnimation)
+
+        }
+    };
+
+    iconAnimation = setInterval(iconFn, 100);
+
 
 }
 
@@ -621,6 +714,8 @@ function _over() {
     $('#getNum').text(setNum)
 
     var $perc = (setCorrect / setNum).toFixed(4) * 100
+
+    console.log('$perc', $perc)
 
     $('#getPerc').text($perc + '%')
 

@@ -242,6 +242,10 @@ img {
     width: 8%;
 }
 
+#helpBox {
+    z-index: 11;
+}
+
 .help {
     position: absolute;
     bottom: 40%;
