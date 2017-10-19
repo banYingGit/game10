@@ -186,12 +186,10 @@ function _moveZoo() {
         startY = touch.pageY;
 
         curIsTure = ""
-        console.log('touchstart')
     });
 
     $('#movePart').on('touchmove', function (e) {
 
-        console.log('touchmove')
         var touch = e.originalEvent.touches[0];
 
         //获取滑动屏幕时的X,Y
@@ -245,6 +243,12 @@ function _moveZoo() {
 
 
         if (curIsTure == "yes") {
+
+            var screenH = $(document).height()
+
+            $('img[data-role="d"]').parent('p').append('<span class="add"  style="font-size: ' + screenH / 18 + 'px">+ 100</span>')
+
+            $('img[data-role="d"]').parent('p').children('.add').animate({"opacity": 0}, 1000)
 
             $('#subPro img').eq(curSub).attr("src", "img/icon1.png")
 
@@ -402,7 +406,7 @@ function _moveHelp() {
             }
 
         }
-        console.log('$moveIndex', $moveIndex)
+        // console.log('$moveIndex', $moveIndex)
 
         $('#spot li').removeClass('active')
         $('#spot li').eq($moveIndex).addClass('active')
